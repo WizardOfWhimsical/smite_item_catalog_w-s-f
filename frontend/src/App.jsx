@@ -17,7 +17,7 @@ function App() {
       setTest(data.message);
     }
     get_fetch();
-  }, []);
+  }, [test]);
 
   return (
     <>
