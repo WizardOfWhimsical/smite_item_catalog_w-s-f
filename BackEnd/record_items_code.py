@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 # my_dict = {"message": "Hello World"}
 # print(json.dumps(my_dict))
@@ -11,24 +12,29 @@ fake_item = {
   "effect":{"type":"stack", "description":"5/god kill 1/assist or jungle boss. 1 stack = 2%% crit | 3 strength. At 10 stacks Rage evolves 15%% to crit and 35 to strength"}
 }
 
-
-file_path = "BackEnd/file.json"
 # append
 # this opens reads data to a varailable then new dict added to the end
 # of the list so that we can write the data back to the file
+
+file_path = Path(__file__).parent / "file.json"
+# def write_to_list(item):
 try:
   with open(file_path, "r+") as file:
     current_data = json.load(file)
-    print(current_data)
+
+    for item in current_data:
+      if item["id"] == fake_item["id"]:
+        raise ValueError("Items exists already")
+
     current_data.append(fake_item)
-    print(current_data)
     file.seek(0)
     file.truncate()
     json.dump(current_data, file, indent=4)
 except Exception as e:
   print(e)
-  print("Something went wrong with the save")
+  print("^^^^This went wrong with the save")
 
+# update_list(fake_item)
 
 # with open("data.json", "a+") as file:
 #     json.dump(item, file, indent=4)
