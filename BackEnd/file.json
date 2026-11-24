@@ -1,0 +1,15 @@
+[
+    {
+        "id": "uuid",
+        "cost": "items_cost_is_int",
+        "name": "Rage",
+        "stats": {
+            "strength": 30,
+            "critical_hit": "20%"
+        },
+        "effect": {
+            "type": "stack",
+            "description": "5/god kill 1/assist or jungle boss. 1 stack = 2%% crit | 3 strength. At 10 stacks Rage evolves 15%% to crit and 35 to strength"
+        }
+    }
+]
