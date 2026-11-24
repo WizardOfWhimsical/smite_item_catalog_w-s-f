@@ -13,7 +13,7 @@ export async function get_items() {
     return { message: error.message };
   }
 }
-export async function post_items(item) {
+export async function post_item(item) {
   try {
     const response = await fetch(BASE_URL, {
       method: "POST",

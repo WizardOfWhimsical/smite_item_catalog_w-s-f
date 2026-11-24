@@ -1,20 +1,15 @@
 import { useState, useEffect } from "react";
+import { get_items, post_item } from "#fetch_helpers";
 import "./App.css";
 
-const connectionString = "/v1/api/py_backend";
-
 function App() {
-  const [test, setTest] = useState("");
+  const [test, setTest] = useState([]);
 
   useEffect(() => {
+    // make custom hook for this
     async function get_fetch() {
-      const resp = await fetch(connectionString);
-      if (!resp.ok) {
-        console.log("data not ok");
-      }
-      const data = await resp.json();
-      console.log("data", data.message);
-      setTest(data.message);
+      const data = get_items();
+      setTest(data);
     }
     get_fetch();
   }, [test]);
